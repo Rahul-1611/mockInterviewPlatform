@@ -1,0 +1,21 @@
+<%- include('../partials/head') %>
+    </head>
+
+    <body>
+        <h1>SIGN UP!</h1>
+        <form action="/register" method="POST">
+            <div>
+                <label for="name">Enter your name:</label>
+                <input type="text" name="name" id="name" placeholder="Rahul Deshmukh">
+            </div>
+            <div>
+                <label for="username">Enter Username:</label>
+                <input type="text" name="username" id="username" placeholder="username">
+            </div>
+            <div>
+                <label for="password">Enter password:</label>
+                <input type="password" name="password" id="password" placeholder="password">
+            </div>
+            <button>Sign Up</button>
+        </form>
+        <%- include('../partials/foot') %>

@@ -1,0 +1,7 @@
+preference page
+- profile with icons 
+- job type
+- experience
+- language
+- technical/ non-..
+- duration 

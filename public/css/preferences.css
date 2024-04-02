@@ -1,0 +1,25 @@
+.btn {
+    border: 2px solid black;
+    margin: 1rem;
+    box-sizing: border-box;
+}
+
+.btn-box {
+    height: 8rem;
+    width: 8rem;
+    box-sizing: border-box;
+    margin: 1rem;
+}
+
+.btn-box {
+    height: 8rem;
+    width: 8rem;
+}
+
+input[type="radio"].btn-check:hover+label.btn {
+    border: 2px solid green;
+}
+
+input[type="radio"]:checked+label.btn {
+    background-color: lightseagreen;
+}

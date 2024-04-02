@@ -1,0 +1,118 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/preferences.css">
+    </head>
+
+    <body class="bg-dark-subtle">
+        <main class="container">
+
+            <h1>Preferences</h1>
+            <form action="/preferences" method="post">
+                <div class="d-flex justify-content-around border">
+                    <div class="border">
+                        <div class="border">
+                            <h3>Choose your profile</h3>
+                            <div>
+                                <input type="radio" class="btn-check" name="profile" id="option5" value="frontend"
+                                    autocomplete="off">
+                                <label class="btn btn-box" for="option5">
+                                    <i class="fa-brands fa-aws fa-xl"></i>
+                                    <div>Frontend</div>
+                                </label>
+
+                                <input type="radio" class="btn-check" name="profile" id="option6" value="backend"
+                                    autocomplete="off">
+                                <label class="btn btn-box" for="option6">Backend</label>
+
+                                <input type="radio" class="btn-check" name="profile" id="option7" value="devops"
+                                    autocomplete="off">
+                                <label class="btn btn-box" for="option7">DevOps</label>
+                            </div>
+                            <div>
+                                <input type="radio" class="btn-check" name="profile" id="option8" value="cloud"
+                                    autocomplete="off">
+                                <label class="btn btn-box" for="option8">Cloud</label>
+
+                                <input type="radio" class="btn-check" name="profile" id="option9" value="ml"
+                                    autocomplete="off">
+                                <label class="btn btn-box" for="option9">Machine Learning</label>
+
+                                <input type="radio" class="btn-check" name="profile" id="option10" value="data"
+                                    autocomplete="off">
+                                <label class="btn btn-box" for="option10">Data Analyst</label>
+                            </div>
+
+
+
+                        </div>
+                        <div>
+                            <h3>Choose type of job</h3>
+                            <input type="radio" class="btn-check" name="jobType" id="intern" value="intern"
+                                autocomplete="off">
+                            <label class="btn" for="intern">Internship</label>
+
+                            <input type="radio" class="btn-check" name="jobType" id="fullTime" value="full"
+                                autocomplete="off">
+                            <label class="btn" for="fullTime">Full time</label>
+                        </div>
+                        <div>
+                            <h3>Choose type of interview</h3>
+                            <input type="radio" class="btn-check" name="interviewType" id="technical" value="technical"
+                                autocomplete="off">
+                            <label class="btn" for="technical">Technical</label>
+
+                            <input type="radio" class="btn-check" name="interviewType" id="behavioural"
+                                value="behavioural" autocomplete="off">
+                            <label class="btn" for="behavioural">Behavioural</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h3>Choose candidate experience</h3>
+                            <input type="radio" class="btn-check" name="experience" id="rookie" value="rookie"
+                                autocomplete="off">
+                            <label class="btn" for="rookie">Rookie</label>
+
+                            <input type="radio" class="btn-check" name="experience" id="intermediate"
+                                value="intermediate" autocomplete="off">
+                            <label class="btn" for="intermediate">Intermediate</label>
+
+                            <input type="radio" class="btn-check" name="experience" id="Expert" value="expert"
+                                autocomplete="off">
+                            <label class="btn" for="Expert">Expert</label>
+                        </div>
+                        <div>
+                            <h3>Choose your preferred language</h3>
+                            <input type="radio" class="btn-check" name="language" id="javascript" value="javascript"
+                                autocomplete="off">
+                            <label class="btn btn-box" for="javascript">Javascript</label>
+
+                            <input type="radio" class="btn-check" name="language" id="c++" value="c++"
+                                autocomplete="off">
+                            <label class="btn btn-box" for="c++">C++</label>
+
+                            <input type="radio" class="btn-check" name="language" id="java" value="java"
+                                autocomplete="off">
+                            <label class="btn btn-box" for="java">Java</label>
+                        </div>
+                        <div>
+                            <h3>Choose duration</h3>
+                            <% const timeValues=['15min', '30min' , '60min' ]; %>
+                                <% timeValues.forEach((value)=> { %>
+                                    <input type="radio" class="btn-check" name="duration" id="<%= value %>"
+                                        value="<%= value%>" autocomplete="off">
+                                    <label class="btn" for="<%= value %>">
+                                        <%= value.replace('min', ' mins' ) %>
+                                    </label>
+                                    <% }); %>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <button class="btn btn-success">Submit</button>
+            </form>
+        </main>
+
+
+        <%- include('../partials/foot') %>
