@@ -1,66 +1,24 @@
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
+    background: linear-gradient(0.22turn, white, cyan);
 }
 
-.container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+img {
+    mix-blend-mode: multiply;
+    height: 4rem;
 }
 
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 16px;
-}
-
-input[type="text"],
-input[type="password"] {
+.btn {
     width: 100%;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
 }
 
-.continue-with-git {
-    margin-top: 20px;
-    text-align: center;
+.left {
+    margin-left: 4rem;
 }
 
-.continue-with-git a {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.terms {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 14px;
-    color: #aaa;
-}
-
-.terms a {
-    color: #007bff;
-    text-decoration: none;
+.right {
+    background-color: rgba(0, 0, 139, 0.2);
+    border: 2px solid blue;
+    border-radius: 10px;
+    padding: 9rem;
+    margin-right: 5rem;
 }

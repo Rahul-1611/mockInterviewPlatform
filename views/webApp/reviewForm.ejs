@@ -1,0 +1,71 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="css/review.css">
+
+    </head>
+
+    <body class="d-flex justify-content-center mt-3">
+        <form action="" method="post" class="d-flex flex-column justify-content-center align-items-center">
+            <div class="mb-3">
+                <h3>Kindly provide feedback your peer</h3>
+            </div>
+            <div class="mb-3">
+                <p>How would you rate your peer's coding skill</p>
+                <div class="d-flex">
+                    <% for( let index=1; index < 11; index++ ) { %>
+                        <div>
+                            <input type="radio" id="qnone<%= index %>" name="first" value="<%= index %>">
+                            <label for="qnone<%= index %>">
+                                <%= index %>
+                            </label>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+            <div class="mb-3">
+                <p>How would you rate your peer's communication abilities</p>
+                <div class="d-flex">
+                    <% for( let index=1; index < 11; index++ ) { %>
+                        <div>
+                            <input type="radio" id="qntwo<%= index %>" name="second" value="<%= index %>">
+                            <label for="qntwo<%= index %>">
+                                <%= index %>
+                            </label>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+            <div class="mb-3">
+                <p>How would you rate your peer's problem solving approach</p>
+                <div class="d-flex">
+                    <% for( let index=1; index < 11; index++ ) { %>
+                        <div>
+                            <input type="radio" id="qnthree<%= index %>" name="third" value="<%= index %>">
+                            <label for="qnthree<%= index %>">
+                                <%= index %>
+                            </label>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+            <div class="mb-3">
+                <p>How would you rate your peer's overall</p>
+                <div class="d-flex">
+                    <% for( let index=1; index < 6; index++ ) { %>
+                        <div>
+                            <input type="radio" id="qnfour<%= index %>" name="fourth" value="<%= index %>">
+                            <label for="qnfour<%= index %>">
+                                <%= index %>
+                            </label>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <textarea name="textarea" id="" cols="70" rows="4"
+                        placeholder="Any additional suggestions"></textarea>
+
+                </div>
+            </div>
+        </form>
+        <%- include('../partials/foot') %>

@@ -1,24 +1,35 @@
+body {
+    min-height: 100vh;
+    background: linear-gradient(0.44turn, white, cyan);
+}
+
 .routing-divs {
     box-sizing: border-box;
-    background-color: lightgreen;
+    background-color: white;
     height: 10rem;
     width: 20rem;
-    border-radius: 2rem;
+    border-bottom: 2px solid darkblue;
     margin: 1.5rem;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: end;
-    border: 2px solid green;
+    transition: all 500ms;
 }
 
 .routing-divs a {
     text-decoration: none;
     font-size: larger;
-    color: darkgreen;
+    color: black;
 }
 
 .routing-divs:hover {
-    background-color: rgb(89, 185, 89);
-    border: 2px solid darkgreen;
+    background-color: rgb(115, 166, 177);
+    transform: translateY(-13px);
+}
+
+.card {
+    background: linear-gradient(white, #4193a9);
+    width: 20rem;
+    margin: 2rem;
 }

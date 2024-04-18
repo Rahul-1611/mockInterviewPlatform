@@ -75,9 +75,7 @@ app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/login');
 })
-app.get('/ide', (req, res) => {
-    res.render('webApp/ide');
-})
+
 app.get('/preferences', (req, res) => {
     res.render('webApp/preferences');
 })
@@ -117,6 +115,9 @@ app.post('/lobby', (req, res) => {
 app.get('/interview', (req, res) => {
     const roomId = req.query.roomId;
     res.render('webApp/video', { roomId });
+})
+app.get('/review', (req, res) => {
+    res.render('webApp/reviewForm');
 })
 
 app.listen(4321, () => {

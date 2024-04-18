@@ -1,19 +1,39 @@
 <%- include('../partials/head') %>
+    <link rel="stylesheet" href="css/login.css">
     </head>
 
-    <body class="bg-dark-subtle">
-        <div class="container vh-100 d-flex flex-column justify-content-center">
-            <h1 class="mb-5 pb-5">Sign in to your account</h1>
-            <form action="/login" method="POST">
-                <div>
-                    <label for="username">Enter Username:</label>
-                    <input type="text" name="username" id="username" placeholder="username">
+    <body class="d-flex min-vh-100 align-items-center">
+        <div class="d-flex min-vw-100 justify-content-between align-items-center">
+            <div class="left">
+                <div class="logo"><img src="images/logo.png" alt="logo"></div>
+                <figure>
+                    <blockquote class="blockquote">
+                        <p>If you don't practice, you don't deserve to win.</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        Someone famous in <cite title="Source Title">Tennis</cite>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="right">
+                <div class="logo"><img src="images/logo.png" alt="logo"></div>
+                <h1>mockInterview.io</h1>
+                <p>Sign in to your account</p>
+                <hr>
+                <form action="/login" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label" for="username">Email</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="example@xy">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="124exj">
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary">Login</button>
+                </form>
+                <div class="m-3">
+                    <p>Don't have an account, <a href="/register">Register</a></p>
                 </div>
-                <div>
-                    <label for="password">Enter password:</label>
-                    <input type="password" name="password" id="password" placeholder="password">
-                </div>
-                <button>Login</button>
-            </form>
+            </div>
         </div>
         <%- include('../partials/foot') %>
