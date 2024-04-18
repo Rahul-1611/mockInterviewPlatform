@@ -29,7 +29,7 @@ const requireLogin = (req, res, next) => {
     next();
 }
 
-app.get('/', requireLogin, (req, res) => {
+app.get('/', (req, res) => {
     res.render("webApp/dashboard");
 })
 app.get('/register', (req, res) => {
@@ -66,19 +66,22 @@ app.post('/logout', (req, res) => {
     res.redirect('/login');
 })
 
-app.get('/preferences', requireLogin, (req, res) => {
+app.get('/preferences', (req, res) => {
     res.render('webApp/preferences');
 })
-app.post('/preferences', requireLogin, async (req, res) => {
-    const { profile, jobType, interviewType, experience, language,
-        duration } = req.body;
-    let userID = req.session.user_id;
-    const pref = new Preferences({
-        profile, jobType, interviewType, experience, language,
-        duration, user: userID
-    });
-    await pref.save();
+app.post('/preferences', async (req, res) => {
+    // const { profile, jobType, interviewType, experience, language,
+    //     duration } = req.body;
+    // let userID = req.session.user_id;
+    // const pref = new Preferences({
+    //     profile, jobType, interviewType, experience, language,
+    //     duration, user: userID
+    // });
+    // await pref.save();
     res.redirect('/');
+})
+app.get('/candidates', (req, res) => {
+    res.render('webApp/candidates');
 })
 app.get('/lobby', (req, res) => {
     res.render('webApp/lobby');

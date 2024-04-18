@@ -1,19 +1,19 @@
 <%- include('../partials/head') %>
-
     </head>
 
-    <body>
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <div>
-                <label for="username">Enter Username:</label>
-                <input type="text" name="username" id="username" placeholder="username">
-            </div>
-            <div>
-                <label for="password">Enter password:</label>
-                <input type="password" name="password" id="password" placeholder="password">
-            </div>
-            <button>Login</button>
-        </form>
-
+    <body class="bg-dark-subtle">
+        <div class="container vh-100 d-flex flex-column justify-content-center">
+            <h1 class="mb-5 pb-5">Sign in to your account</h1>
+            <form action="/login" method="POST">
+                <div>
+                    <label for="username">Enter Username:</label>
+                    <input type="text" name="username" id="username" placeholder="username">
+                </div>
+                <div>
+                    <label for="password">Enter password:</label>
+                    <input type="password" name="password" id="password" placeholder="password">
+                </div>
+                <button>Login</button>
+            </form>
+        </div>
         <%- include('../partials/foot') %>

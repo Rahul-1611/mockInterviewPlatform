@@ -1,0 +1,24 @@
+.routing-divs {
+    box-sizing: border-box;
+    background-color: lightgreen;
+    height: 10rem;
+    width: 20rem;
+    border-radius: 2rem;
+    margin: 1.5rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    border: 2px solid green;
+}
+
+.routing-divs a {
+    text-decoration: none;
+    font-size: larger;
+    color: darkgreen;
+}
+
+.routing-divs:hover {
+    background-color: rgb(89, 185, 89);
+    border: 2px solid darkgreen;
+}

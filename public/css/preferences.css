@@ -5,15 +5,10 @@
 }
 
 .btn-box {
-    height: 8rem;
-    width: 8rem;
+    height: 6.5rem;
+    width: 7rem;
     box-sizing: border-box;
     margin: 1rem;
-}
-
-.btn-box {
-    height: 8rem;
-    width: 8rem;
 }
 
 input[type="radio"].btn-check:hover+label.btn {
@@ -21,5 +16,5 @@ input[type="radio"].btn-check:hover+label.btn {
 }
 
 input[type="radio"]:checked+label.btn {
-    background-color: lightseagreen;
+    background-color: lightgreen;
 }
