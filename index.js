@@ -28,9 +28,18 @@ const requireLogin = (req, res, next) => {
     }
     next();
 }
+function calculateJaccardIndex(pref1, pref2, fields) {
+    const setA = fields.map(field => pref1[field]);
+    const setB = fields.map(field => pref2[field]);
+
+    const intersection = setA.filter(value => setB.includes(value));
+    const union = new Set([...setA, ...setB]);
+
+    return intersection.length / union.size;
+}
 
 app.get('/', (req, res) => {
-    res.render("webApp/dashboard");
+    res.render("webApp/dashboard", { foundUser: req.session.user });
 })
 app.get('/register', (req, res) => {
     res.render('webApp/register')
@@ -52,6 +61,7 @@ app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     const foundUser = await User.findAndValidate(username, password);
     if (foundUser) {
+        req.session.user = foundUser;
         req.session.user_id = foundUser._id;
         res.render('webApp/dashboard', { foundUser });
     }
@@ -60,28 +70,42 @@ app.post('/login', async (req, res) => {
     }
 })
 
-app.post('/logout', (req, res) => {
+app.get('/logout', (req, res) => {
     req.session.user_id = null;
-    // req.session.destroy();
+    req.session.destroy();
     res.redirect('/login');
 })
-
+app.get('/ide', (req, res) => {
+    res.render('webApp/ide');
+})
 app.get('/preferences', (req, res) => {
     res.render('webApp/preferences');
 })
 app.post('/preferences', async (req, res) => {
-    // const { profile, jobType, interviewType, experience, language,
-    //     duration } = req.body;
-    // let userID = req.session.user_id;
-    // const pref = new Preferences({
-    //     profile, jobType, interviewType, experience, language,
-    //     duration, user: userID
-    // });
-    // await pref.save();
+    const { profile, jobType, interviewType, experience, language,
+        duration } = req.body;
+    let userID = req.session.user_id;
+    await Preferences.findOneAndDelete({ user: userID })
+    const pref = new Preferences({
+        profile, jobType, interviewType, experience, language,
+        duration, user: userID
+    });
+    await pref.save();
     res.redirect('/');
 })
-app.get('/candidates', (req, res) => {
-    res.render('webApp/candidates');
+app.get('/candidates/:userId', async (req, res) => {
+    const userPreferences = await Preferences.findOne({ user: req.params.userId });
+    const otherUsersPreferences = await Preferences.find({ user: { $ne: req.params.userId } });
+
+    const fieldsToCompare = ['duration', 'language', 'profile', 'jobType', 'interviewType', 'experience'];
+    const matches = otherUsersPreferences.map(otherPref => {
+        const similarity = calculateJaccardIndex(userPreferences, otherPref, fieldsToCompare);
+        return { user: otherPref.user, similarity };
+    }).filter(match => match.similarity >= 0.5);
+    res.send(matches);
+
+    // res.send(otherUsersPreferences);
+    // res.render('webApp/candidates',{pref});
 })
 app.get('/lobby', (req, res) => {
     res.render('webApp/lobby');

@@ -21,7 +21,7 @@
 #user-2 {
     display: none;
     height: 30rem;
-    width: 40rem;
+    width: 100%;
     display: flex;
     border-radius: 1rem;
     border: 2px solid #b366f9;
@@ -80,4 +80,8 @@
         height: 20px;
         width: 20px;
     }
+}
+
+#main-container {
+    width: 100vw;
 }

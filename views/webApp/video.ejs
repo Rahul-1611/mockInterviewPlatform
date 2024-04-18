@@ -1,60 +1,72 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>PeerChat</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+<%- include('../partials/head') %>
     <link rel='stylesheet' type='text/css' media='screen' href='css/videoSetup.css'>
-</head>
+    <link rel="stylesheet" href="css/ide.css" />
+    </head>
 
-<body>
-
-    <div id="videos">
-        <video class="video-player" id="user-1" autoplay playsinline></video>
-        <video class="video-player" id="user-2" autoplay playsinline></video>
-        <div>
-            <h2>Suggested questions</h2>
-            <ul>
-                <li>What is AWS?</li>
-                <li>What pay-per-go model?</li>
-                <li>Define infrastruture as a code?</li>
-            </ul>
-        </div>
-    </div>
-    <div>
-        <h2>Suggested questions</h2>
-        <ul>
-            <li>What is AWS?</li>
-            <li>What pay-per-go model?</li>
-            <li>Define infrastruture as a code?</li>
-        </ul>
-    </div>
-
-    <div id="controls">
-
-        <div class="control-container" id="camera-btn">
-            <img src="icons/camera.png" />
-        </div>
-
-        <div class="control-container" id="mic-btn">
-            <img src="icons/mic.png" />
-        </div>
-
-        <a href="/">
-            <div class="control-container" id="leave-btn">
-                <img src="icons/phone.png" />
+    <body>
+        <div id="main-container" class="d-flex">
+            <div id="videos">
+                <video class="video-player" id="user-1" autoplay playsinline></video>
+                <video class="video-player" id="user-2" autoplay playsinline></video>
+                <div>
+                    <h2>Suggested questions</h2>
+                    <ul>
+                        <li>What is AWS?</li>
+                        <li>What pay-per-go model?</li>
+                        <li>Define infrastruture as a code?</li>
+                    </ul>
+                </div>
             </div>
-        </a>
+            <div id="ide">
+                <div class="header"> Codeboard Online IDE </div>
+                <div class="control-panel">
+                    Select Language:
+                    &nbsp; &nbsp;
+                    <select id="languages" class="languages" onchange="changeLanguage()">
+                        <option value="c"> C </option>
+                        <option value="cpp"> C++ </option>
+                        <option value="php"> PHP </option>
+                        <option value="python"> Python </option>
+                        <option value="node"> Node JS </option>
+                    </select>
+                </div>
+                <div class="editor" id="editor"></div>
 
-    </div>
+                <div class="button-container">
+                    <button class="btn" onclick="executeCode()"> Run </button>
+                </div>
 
-</body>
-<script src='js/agora-rtm-sdk-1.4.4.js'></script>
-<script>
-    var currentRoomId = "<%= roomId %>";
-</script>
-<script src='js/videoSetup.js'></script>
+                <div class="output"></div>
+            </div>
 
-</html>
+        </div>
+        <div id="controls">
+
+            <div class="control-container" id="camera-btn">
+                <img src="icons/camera.png" />
+            </div>
+
+            <div class="control-container" id="mic-btn">
+                <img src="icons/mic.png" />
+            </div>
+
+            <a href="/">
+                <div class="control-container" id="leave-btn">
+                    <img src="icons/phone.png" />
+                </div>
+            </a>
+
+        </div>
+
+    </body>
+    <script src='js/agora-rtm-sdk-1.4.4.js'></script>
+    <script>
+        var currentRoomId = "<%= roomId %>";
+    </script>
+    <script src='js/videoSetup.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/lib/ace.js"></script>
+    <script src="js/lib/theme-monokai.js"></script>
+    <script src="js/ide.js"></script>
+
+    </html>
