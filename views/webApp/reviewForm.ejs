@@ -4,9 +4,11 @@
     </head>
 
     <body class="d-flex justify-content-center mt-3">
-        <form action="" method="post" class="d-flex flex-column justify-content-center align-items-center">
+        <form action="/review?peerId=<%= peer._id %>" method="post"
+            class="d-flex flex-column justify-content-center align-items-center">
             <div class="mb-3">
-                <h3>Kindly provide feedback your peer</h3>
+                <h3>Kindly provide feedback for <%= peer.name %>
+                </h3>
             </div>
             <div class="mb-3">
                 <p>How would you rate your peer's coding skill</p>
@@ -67,5 +69,6 @@
 
                 </div>
             </div>
+            <button class="btn btn-success" type="submit"> Submit</button>
         </form>
         <%- include('../partials/foot') %>

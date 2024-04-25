@@ -3,141 +3,142 @@
     </head>
 
     <body class="bg-dark-subtle">
-        <main class="container">
+        <%- include('../partials/nav') %>
+            <main class="container">
 
-            <h1>Preferences</h1>
-            <form action="/preferences" method="post">
-                <div class="d-flex justify-content-center gap-5">
-                    <div>
+                <h1>Preferences</h1>
+                <form action="/preferences" method="post">
+                    <div class="d-flex justify-content-center gap-5">
                         <div>
-                            <h3>Choose your profile</h3>
                             <div>
-                                <input type="radio" class="btn-check" name="profile" id="option5" value="frontend"
-                                    autocomplete="off">
-                                <label class="btn btn-box p-3" for="option5">
-                                    <i class="fa-brands fa-react fa-2xl"></i>
-                                    <div class="mt-3">Frontend</div>
-                                </label>
-
-                                <input type="radio" class="btn-check" name="profile" id="option6" value="backend"
-                                    autocomplete="off">
-                                <label class="btn btn-box p-3" for="option6">
-                                    <i class="fa-solid fa-server fa-2xl"></i>
-                                    <div class="mt-3">Backend</div>
-                                </label>
-
-                                <input type="radio" class="btn-check" name="profile" id="option7" value="devops"
-                                    autocomplete="off">
-                                <label class="btn btn-box p-3" for="option7">
-                                    <i class="fa-solid fa-infinity fa-2xl"></i>
-                                    <div class="mt-3">DevOps</div>
-                                </label>
-                            </div>
-                            <div>
-                                <input type="radio" class="btn-check" name="profile" id="option8" value="cloud"
-                                    autocomplete="off">
-                                <label class="btn btn-box p-3" for="option8">
-                                    <i class="fa-brands fa-aws fa-2xl"></i>
-                                    <div class="mt-3">Cloud</div>
-                                </label>
-
-                                <input type="radio" class="btn-check" name="profile" id="option9" value="ml"
-                                    autocomplete="off">
-                                <label class="btn btn-box p-3" for="option9">
-                                    <i class="fa-solid fa-robot fa-2xl"></i>
-                                    <div class="mt-3">ML</div>
-                                </label>
-
-                                <input type="radio" class="btn-check" name="profile" id="option10" value="data"
-                                    autocomplete="off">
-                                <label class="btn btn-box p-3" for="option10">
-                                    <i class="fa-solid fa-database fa-2xl"></i>
-                                    <div class="mt-3">Analyst</div>
-                                </label>
-                            </div>
-
-
-
-                        </div>
-                        <div>
-                            <h3>Choose type of job</h3>
-                            <input type="radio" class="btn-check" name="jobType" id="intern" value="intern"
-                                autocomplete="off">
-                            <label class="btn" for="intern">Internship</label>
-
-                            <input type="radio" class="btn-check" name="jobType" id="fullTime" value="full"
-                                autocomplete="off">
-                            <label class="btn" for="fullTime">Full time</label>
-                        </div>
-                        <div>
-                            <h3>Choose type of interview</h3>
-                            <input type="radio" class="btn-check" name="interviewType" id="technical" value="technical"
-                                autocomplete="off">
-                            <label class="btn" for="technical">Technical</label>
-
-                            <input type="radio" class="btn-check" name="interviewType" id="behavioural"
-                                value="behavioural" autocomplete="off">
-                            <label class="btn" for="behavioural">Behavioural</label>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <h3>Choose candidate experience</h3>
-                            <input type="radio" class="btn-check" name="experience" id="rookie" value="rookie"
-                                autocomplete="off">
-                            <label class="btn" for="rookie">Rookie</label>
-
-                            <input type="radio" class="btn-check" name="experience" id="intermediate"
-                                value="intermediate" autocomplete="off">
-                            <label class="btn" for="intermediate">Intermediate</label>
-
-                            <input type="radio" class="btn-check" name="experience" id="Expert" value="expert"
-                                autocomplete="off">
-                            <label class="btn" for="Expert">Expert</label>
-                        </div>
-                        <div>
-                            <h3>Choose your preferred language</h3>
-                            <input type="radio" class="btn-check" name="language" id="javascript" value="javascript"
-                                autocomplete="off">
-                            <label class="btn btn-box p-3" for="javascript">
-                                <i class="fa-brands fa-js fa-2xl"></i>
-                                <div class="mt-3">Javascript</div>
-                            </label>
-
-                            <input type="radio" class="btn-check" name="language" id="c++" value="c++"
-                                autocomplete="off">
-                            <label class="btn btn-box p-3" for="c++">
-                                <i class="fa-brands fa-c fa-2xl mt-3"></i>
-                                <i class="fa-brands fa-plus fa-xl"></i>
-                                <i class="fa-brands fa-plus fa-xl"></i>
-                                <div class="mt-3">CPP</div>
-                            </label>
-
-                            <input type="radio" class="btn-check" name="language" id="java" value="java"
-                                autocomplete="off">
-                            <label class="btn btn-box p-3" for="java">
-                                <i class="fa-brands fa-java fa-2xl"></i>
-                                <div class="mt-3">Java</div>
-                            </label>
-                        </div>
-                        <div>
-                            <h3>Choose duration</h3>
-                            <% const timeValues=['15min', '30min' , '60min' ]; %>
-                                <% timeValues.forEach((value)=> { %>
-                                    <input type="radio" class="btn-check" name="duration" id="<%= value %>"
-                                        value="<%= value%>" autocomplete="off">
-                                    <label class="btn" for="<%= value %>">
-                                        <%= value.replace('min', ' mins' ) %>
+                                <h3>Choose your profile</h3>
+                                <div>
+                                    <input type="radio" class="btn-check" name="profile" id="option5" value="frontend"
+                                        autocomplete="off">
+                                    <label class="btn btn-box p-3" for="option5">
+                                        <i class="fa-brands fa-react fa-2xl"></i>
+                                        <div class="mt-3">Frontend</div>
                                     </label>
-                                    <% }); %>
+
+                                    <input type="radio" class="btn-check" name="profile" id="option6" value="backend"
+                                        autocomplete="off">
+                                    <label class="btn btn-box p-3" for="option6">
+                                        <i class="fa-solid fa-server fa-2xl"></i>
+                                        <div class="mt-3">Backend</div>
+                                    </label>
+
+                                    <input type="radio" class="btn-check" name="profile" id="option7" value="devops"
+                                        autocomplete="off">
+                                    <label class="btn btn-box p-3" for="option7">
+                                        <i class="fa-solid fa-infinity fa-2xl"></i>
+                                        <div class="mt-3">DevOps</div>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" class="btn-check" name="profile" id="option8" value="cloud"
+                                        autocomplete="off">
+                                    <label class="btn btn-box p-3" for="option8">
+                                        <i class="fa-brands fa-aws fa-2xl"></i>
+                                        <div class="mt-3">Cloud</div>
+                                    </label>
+
+                                    <input type="radio" class="btn-check" name="profile" id="option9" value="ml"
+                                        autocomplete="off">
+                                    <label class="btn btn-box p-3" for="option9">
+                                        <i class="fa-solid fa-robot fa-2xl"></i>
+                                        <div class="mt-3">ML</div>
+                                    </label>
+
+                                    <input type="radio" class="btn-check" name="profile" id="option10" value="data"
+                                        autocomplete="off">
+                                    <label class="btn btn-box p-3" for="option10">
+                                        <i class="fa-solid fa-database fa-2xl"></i>
+                                        <div class="mt-3">Analyst</div>
+                                    </label>
+                                </div>
+
+
+
+                            </div>
+                            <div>
+                                <h3>Choose type of job</h3>
+                                <input type="radio" class="btn-check" name="jobType" id="intern" value="intern"
+                                    autocomplete="off">
+                                <label class="btn" for="intern">Internship</label>
+
+                                <input type="radio" class="btn-check" name="jobType" id="fullTime" value="full"
+                                    autocomplete="off">
+                                <label class="btn" for="fullTime">Full time</label>
+                            </div>
+                            <div>
+                                <h3>Choose type of interview</h3>
+                                <input type="radio" class="btn-check" name="interviewType" id="technical"
+                                    value="technical" autocomplete="off">
+                                <label class="btn" for="technical">Technical</label>
+
+                                <input type="radio" class="btn-check" name="interviewType" id="behavioural"
+                                    value="behavioural" autocomplete="off">
+                                <label class="btn" for="behavioural">Behavioural</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Choose candidate experience</h3>
+                                <input type="radio" class="btn-check" name="experience" id="rookie" value="rookie"
+                                    autocomplete="off">
+                                <label class="btn" for="rookie">Rookie</label>
+
+                                <input type="radio" class="btn-check" name="experience" id="intermediate"
+                                    value="intermediate" autocomplete="off">
+                                <label class="btn" for="intermediate">Intermediate</label>
+
+                                <input type="radio" class="btn-check" name="experience" id="Expert" value="expert"
+                                    autocomplete="off">
+                                <label class="btn" for="Expert">Expert</label>
+                            </div>
+                            <div>
+                                <h3>Choose your preferred language</h3>
+                                <input type="radio" class="btn-check" name="language" id="javascript" value="javascript"
+                                    autocomplete="off">
+                                <label class="btn btn-box p-3" for="javascript">
+                                    <i class="fa-brands fa-js fa-2xl"></i>
+                                    <div class="mt-3">Javascript</div>
+                                </label>
+
+                                <input type="radio" class="btn-check" name="language" id="c++" value="c++"
+                                    autocomplete="off">
+                                <label class="btn btn-box p-3" for="c++">
+                                    <i class="fa-brands fa-c fa-2xl mt-3"></i>
+                                    <i class="fa-brands fa-plus fa-xl"></i>
+                                    <i class="fa-brands fa-plus fa-xl"></i>
+                                    <div class="mt-3">CPP</div>
+                                </label>
+
+                                <input type="radio" class="btn-check" name="language" id="java" value="java"
+                                    autocomplete="off">
+                                <label class="btn btn-box p-3" for="java">
+                                    <i class="fa-brands fa-java fa-2xl"></i>
+                                    <div class="mt-3">Java</div>
+                                </label>
+                            </div>
+                            <div>
+                                <h3>Choose duration</h3>
+                                <% const timeValues=['15min', '30min' , '60min' ]; %>
+                                    <% timeValues.forEach((value)=> { %>
+                                        <input type="radio" class="btn-check" name="duration" id="<%= value %>"
+                                            value="<%= value%>" autocomplete="off">
+                                        <label class="btn" for="<%= value %>">
+                                            <%= value.replace('min', ' mins' ) %>
+                                        </label>
+                                        <% }); %>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="w-100 d-flex justify-content-center">
-                    <button class="btn btn-success">Submit</button>
-                </div>
-            </form>
-        </main>
+                    <div class="w-100 d-flex justify-content-center">
+                        <button class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </main>
 
 
-        <%- include('../partials/foot') %>
+            <%- include('../partials/foot') %>

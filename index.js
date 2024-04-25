@@ -2,11 +2,14 @@ let express = require('express');
 let app = express();
 const ejsMate = require('ejs-mate');
 const path = require('path');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const User = require('./models/user');
 const Preferences = require('./models/preferences');
+const Matches = require('./models/matches');
 const session = require('express-session');
+let matches = [];
 
 mongoose.connect('mongodb://localhost:27017/mockInterview', {
     useNewUrlParser: true,
@@ -19,7 +22,9 @@ app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/review/css', express.static('public/css'));
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(session({ secret: 'notagoodsecret' }))
 
 const requireLogin = (req, res, next) => {
@@ -38,7 +43,7 @@ function calculateJaccardIndex(pref1, pref2, fields) {
     return intersection.length / union.size;
 }
 
-app.get('/', (req, res) => {
+app.get('/', requireLogin, (req, res) => {
     res.render("webApp/dashboard", { foundUser: req.session.user });
 })
 app.get('/register', (req, res) => {
@@ -92,18 +97,44 @@ app.post('/preferences', async (req, res) => {
     res.redirect('/');
 })
 app.get('/candidates/:userId', async (req, res) => {
+
     const userPreferences = await Preferences.findOne({ user: req.params.userId });
     const otherUsersPreferences = await Preferences.find({ user: { $ne: req.params.userId } });
 
     const fieldsToCompare = ['duration', 'language', 'profile', 'jobType', 'interviewType', 'experience'];
-    const matches = otherUsersPreferences.map(otherPref => {
+    matches = otherUsersPreferences.map(otherPref => {
         const similarity = calculateJaccardIndex(userPreferences, otherPref, fieldsToCompare);
-        return { user: otherPref.user, similarity };
+        return { myID: req.params.userId, peerID: otherPref.user, similarity };
     }).filter(match => match.similarity >= 0.5);
-    res.send(matches);
+    console.log(matches);
+    // await Matches.deleteMany({ myID: req.params.userId });
+    // await Matches.insertMany(matches);
+    const usersToFind = matches.map(a => a.peerID);
+    const candidates = await User.find({ _id: { $in: usersToFind } });
+    console.log(candidates);
+    const data = matches.map(d => {
+        let us = candidates.find(c => c._id.equals(d.peerID));
+        return {
+            ...d, name: us.name, username: us.username
+        }
+    })
+    console.log(data);
 
-    // res.send(otherUsersPreferences);
-    // res.render('webApp/candidates',{pref});
+    console.log(req.params.userId);
+    const matchesDb = await Matches.find({ myID: req.params.userId })
+    console.log(matchesDb);
+    res.render('webApp/candidates', { data, matchesDb });
+})
+app.post('/meetingCode', async (req, res) => {
+    const myID = req.session.user_id;
+    const { code, peerId } = req.query;
+    console.log(myID, peerId);
+    const nw = await Matches.findOneAndUpdate({ myID: myID, peerID: peerId }, { status: 'accepted', code });
+    const nw3 = await Matches.findOneAndUpdate({ myID: peerId, peerID: myID }, { status: 'accepted', code });
+    res.json("Data successfully reached");
+})
+app.get('/candidates', (req, res) => {
+    res.render('webApp/candidates');
 })
 app.get('/lobby', (req, res) => {
     res.render('webApp/lobby');
@@ -113,11 +144,24 @@ app.post('/lobby', (req, res) => {
     res.redirect(`/interview?roomId=${roomId}`);
 });
 app.get('/interview', (req, res) => {
-    const roomId = req.query.roomId;
-    res.render('webApp/video', { roomId });
+    const { roomId, peerId } = req.query;
+    req.session.peerID = peerId;
+    res.render('webApp/video', { roomId, peerId });
 })
-app.get('/review', (req, res) => {
-    res.render('webApp/reviewForm');
+app.get('/review/:peerId', async (req, res) => {
+    const peer = await User.findOne({ _id: req.params.peerId });
+    const peerN = peer.name;
+    console.log(peer);
+    res.render('webApp/reviewForm', { peer });
+})
+app.post('/review', async (req, res) => {
+    const peer = await User.findOne({ _id: req.query.peerId });
+    console.log(req.query);
+    console.log(req.body);
+    res.render('webApp/stats');
+})
+app.get('/stats', (req, res) => {
+    res.render('webApp/stats');
 })
 
 app.listen(4321, () => {

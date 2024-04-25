@@ -1,3 +1,7 @@
+body {
+    background: linear-gradient(0.11turn, white, cyan);
+}
+
 .btn {
     border: 2px solid black;
     margin: 1rem;
@@ -16,5 +20,9 @@ input[type="radio"].btn-check:hover+label.btn {
 }
 
 input[type="radio"]:checked+label.btn {
-    background-color: lightgreen;
+    background-color: rgb(155, 225, 241);
+}
+
+img {
+    mix-blend-mode: multiply;
 }

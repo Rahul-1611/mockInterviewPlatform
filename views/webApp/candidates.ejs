@@ -1,18 +1,41 @@
 <%- include('../partials/head') %>
-
+    <link rel="stylesheet" href="/css/candidates.css">
     </head>
 
     <body>
+        <%- include('../partials/nav') %>
+            <h1 class="container my-4 w-75">Peers with similar preferences</h1>
+            <div class="container w-75 d-flex flex-wrap">
 
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <% for(let i=0; i < data.length; i++) { %>
+                    <div class="card mb-4 mr-4" style="width: 18rem;margin-right: 2rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= data[i].name %>
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@<%= data[i].username %>
+                            </h6>
+                            <p class="card-text mb-0 pb-0">Matched Preferences: </p>
+                            <p class="fs-2">
+                                <%= data[i].similarity*100 %>%
+                            </p>
+                            <button type="button" class="setup btn btn-success card-link" data-peerId=<%=data[i].peerID
+                                %>>Setup
+                                Meet</button>
+                            <a id="code<%= i %>"
+                                href="/interview?roomId=<%=matchesDb.find(u=> u.peerID.equals(data[i].peerID)).code%>&peerId=<%= data[i].peerID %>"
+                                class="btn btn-success card-link" role="button" aria-disabled="true">Join:
+
+                                <%= matchesDb.find(u=> u.peerID.equals(data[i].peerID)).code %>
+
+                            </a>
+                        </div>
+                    </div>
+                    <% } %>
+
+                        <script src="/js/candidates.js"></script>
+
             </div>
-        </div>
-        </h1>
-        <%- include('../partials/foot') %>
+
+
+            <%- include('../partials/foot') %>

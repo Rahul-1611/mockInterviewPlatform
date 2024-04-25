@@ -3,99 +3,94 @@
     </head>
 
     <body>
-        <nav class="p-2 d-flex">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="images/logo.png" alt="Logo" width="40" height="35" class="d-inline-block align-text-top">
-                    mockInterview.io
-                </a>
-            </div>
-            <div>
-                <a href="/logout"><Button class="btn btn-danger">Logout</Button></a>
-            </div>
-        </nav>
-        <div class="container">
-            <!-- <h1>Hello, %= foundUser.name %> This is the dashboard</h1> -->
-            <h1>Hello, Rahul</h1>
-            <div id="control-center" class="d-flex flex-column align-items-center">
-                <div class="d-flex">
-                    <div class="routing-divs">
-                        <i class="fa-solid fa-gears fa-2xl mb-3"></i>
-                        <a href="/preferences">Structure your meeting</a>
+        <%- include('../partials/nav') %>
+            <div class="container">
+                <h1>Hello, <%= foundUser.name %>
+                </h1>
+                <!-- <h1>Hello, Rahul</h1> -->
+                <div id="control-center" class="d-flex flex-column align-items-center">
+                    <div class="d-flex">
+                        <div class="routing-divs">
+                            <i class="fa-solid fa-gears fa-2xl mb-3"></i>
+                            <a href="/preferences">Structure your meeting</a>
+                        </div>
+                        <div class="routing-divs">
+                            <i class="fa-solid fa-people-group fa-2xl mb-3"></i>
+                            <!-- <a href="/candidates">Matching Peers</a> -->
+                            <a href="/candidates/<%= foundUser._id  %>">Matching Peers</a>
+                        </div>
                     </div>
-                    <div class="routing-divs">
-                        <i class="fa-solid fa-people-group fa-2xl mb-3"></i>
-                        <a href="/candidates">Matching Peers</a>
-                        <!-- <a href="/candidates/%= foundUser._id  %>">Matching Peers</a> -->
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <div class="routing-divs">
-                        <i class="fa-solid fa-video fa-2xl mb-3"></i>
-                        <a href="/lobby">Enter a lobby</a>
-                    </div>
-                    <div class="routing-divs">
-                        <i class="fa-solid fa-chart-simple fa-2xl mb-3"></i>
-                        <a href="#">Your Stats</a>
+                    <div class="d-flex">
+                        <div class="routing-divs">
+                            <i class="fa-solid fa-video fa-2xl mb-3"></i>
+                            <a href="/lobby">Enter a lobby</a>
+                        </div>
+                        <div class="routing-divs">
+                            <i class="fa-solid fa-chart-simple fa-2xl mb-3"></i>
+                            <a href="#">Your Stats</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="interview-prep">
-                <h2>Prepare for your interview</h2>
-                <p>Review the most important and commonly asked interview questions</p>
-                <div class="d-flex">
+                <div id="interview-prep">
+                    <h2>Prepare for your interview</h2>
+                    <p>Review the most important and commonly asked interview questions</p>
+                    <div class="d-flex">
 
-                    <div class="card">
-                        <div class="card-header">
-                            ML
+                        <div class="card">
+                            <div class="card-header">
+                                ML
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Top 45 Machine Learning Interview Questions</h5>
+                                <p class="card-text">This article takes you through some of the machine learning
+                                    interview
+                                    questions and answers, that you’re likely to encounter on your way to achieving your
+                                    dream job.</p>
+                                <a href="#" class="btn btn-outline-dark">Refer</a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Top 45 Machine Learning Interview Questions</h5>
-                            <p class="card-text">This article takes you through some of the machine learning interview
-                                questions and answers, that you’re likely to encounter on your way to achieving your
-                                dream job.</p>
-                            <a href="#" class="btn btn-outline-dark">Refer</a>
+                        <div class="card">
+                            <div class="card-header">
+                                Frontend
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Frontend Developer Interview Questions</h5>
+                                <p class="card-text">Front-end development is regarded as one of the most successful
+                                    fields,
+                                    particularly for novices in web development.
+                                </p>
+                                <a href="#" class="btn btn-outline-dark">Refer</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            Frontend
+                        <div class="card">
+                            <div class="card-header">
+                                Backend
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Top 100 back-end developer interview questions</h5>
+                                <p class="card-text">Are you a back-end developer preparing for an upcoming interview?
+                                    Or,
+                                    are you a recruiter looking to hire an expert back-end developer?
+                                </p>
+                                <a href="#" class="btn btn-outline-dark">Refer</a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Frontend Developer Interview Questions</h5>
-                            <p class="card-text">Front-end development is regarded as one of the most successful fields,
-                                particularly for novices in web development.
-                            </p>
-                            <a href="#" class="btn btn-outline-dark">Refer</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            Backend
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Top 100 back-end developer interview questions</h5>
-                            <p class="card-text">Are you a back-end developer preparing for an upcoming interview? Or,
-                                are you a recruiter looking to hire an expert back-end developer?
-                            </p>
-                            <a href="#" class="btn btn-outline-dark">Refer</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            Data Science
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Top Data Science Interview Questions and Answers</h5>
-                            <p class="card-text">Data science is an interdisciplinary field that mines raw data,
-                                analyses it, and comes up with patterns that are used to extract valuable insights from
-                                it.
-                            </p>
-                            <a href="#" class="btn btn-outline-dark">Refer</a>
+                        <div class="card">
+                            <div class="card-header">
+                                Data Science
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Top Data Science Interview Questions and Answers</h5>
+                                <p class="card-text">Data science is an interdisciplinary field that mines raw data,
+                                    analyses it, and comes up with patterns that are used to extract valuable insights
+                                    from
+                                    it.
+                                </p>
+                                <a href="#" class="btn btn-outline-dark">Refer</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <%- include('../partials/foot') %>
+            <%- include('../partials/foot') %>
