@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const User = require('./models/user');
+const Stats = require('./models/stats');
 const Preferences = require('./models/preferences');
 const Matches = require('./models/matches');
 const session = require('express-session');
@@ -156,12 +157,38 @@ app.get('/review/:peerId', async (req, res) => {
 })
 app.post('/review', async (req, res) => {
     const peer = await User.findOne({ _id: req.query.peerId });
-    console.log(req.query);
-    console.log(req.body);
+    const data = req.body;
+    for (let key in data) {
+        if (!isNaN(data[key])) {
+            data[key] = Number(data[key]);
+        }
+    }
+    data.user = req.query.peerId;
+    const update = {
+        $set: {
+            first: data.first,
+            second: data.second,
+            third: data.third,
+            fourth: data.fourth,
+
+        },
+        $inc: {
+            meetingCount: 1,
+            firstOv: data.first,
+            secondOv: data.second,
+            thirdOv: data.third,
+            fourthOv: data.fourth,
+        }
+    }
+    const upd = await Stats.findOneAndUpdate({ user: req.query.peerId }, update, { upsert: true, new: true });
+    console.log(upd);
     res.render('webApp/stats');
 })
-app.get('/stats', (req, res) => {
-    res.render('webApp/stats');
+app.get('/stats', async (req, res) => {
+
+    const scores = await Stats.findOne({ user: req.session.user_id });
+
+    res.render('webApp/stats', { scores });
 })
 
 app.listen(4321, () => {
