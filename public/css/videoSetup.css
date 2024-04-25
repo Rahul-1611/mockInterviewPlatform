@@ -5,6 +5,19 @@
 
 }
 
+body {
+    background: linear-gradient(0.33turn, cyan, white);
+}
+
+.questions {
+    border: 2px solid darkblue;
+    border-radius: 10px;
+    background-color: rgb(30, 160, 211);
+    width: 95%;
+    position: relative;
+    bottom: 5rem;
+}
+
 #videos {
     display: grid;
     grid-template-columns: 1fr;
@@ -26,6 +39,7 @@
     display: flex;
     border-radius: 1rem;
     border: 2px solid #b366f9;
+    margin-bottom: 0;
 }
 
 .smallFrame {

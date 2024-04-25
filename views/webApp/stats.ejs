@@ -41,25 +41,25 @@
                     <div class="scores d-flex justify-content-around">
                         <div class="one">
                             <div><span>
-                                    <%= scores.firstOv %>
+                                    <%= (scores.firstOv/scores.meetingCount).toFixed(1); %>
                                 </span>/10</div>
                             <p>Coding</p>
                         </div>
                         <div class="one">
                             <div><span>
-                                    <%= scores.secondOv %>
+                                    <%= (scores.secondOv/scores.meetingCount).toFixed(1); %>
                                 </span>/10</div>
                             <p>Communication</p>
                         </div>
                         <div class="one">
                             <div><span>
-                                    <%= scores.thirdOv %>
+                                    <%= (scores.thirdOv/scores.meetingCount).toFixed(1); %>
                                 </span>/10</div>
                             <p>Problem Solving</p>
                         </div>
                         <div class="one">
                             <div><span>
-                                    <%= scores.fourthOv %>
+                                    <%= (scores.fourthOv/scores.meetingCount).toFixed(1); %>
                                 </span>/5</div>
                             <p>Overall</p>
                         </div>

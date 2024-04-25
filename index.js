@@ -107,29 +107,27 @@ app.get('/candidates/:userId', async (req, res) => {
         const similarity = calculateJaccardIndex(userPreferences, otherPref, fieldsToCompare);
         return { myID: req.params.userId, peerID: otherPref.user, similarity };
     }).filter(match => match.similarity >= 0.5);
-    console.log(matches);
+
     // await Matches.deleteMany({ myID: req.params.userId });
     // await Matches.insertMany(matches);
     const usersToFind = matches.map(a => a.peerID);
     const candidates = await User.find({ _id: { $in: usersToFind } });
-    console.log(candidates);
+
     const data = matches.map(d => {
         let us = candidates.find(c => c._id.equals(d.peerID));
         return {
             ...d, name: us.name, username: us.username
         }
     })
-    console.log(data);
 
-    console.log(req.params.userId);
     const matchesDb = await Matches.find({ myID: req.params.userId })
-    console.log(matchesDb);
+
     res.render('webApp/candidates', { data, matchesDb });
 })
 app.post('/meetingCode', async (req, res) => {
     const myID = req.session.user_id;
     const { code, peerId } = req.query;
-    console.log(myID, peerId);
+
     const nw = await Matches.findOneAndUpdate({ myID: myID, peerID: peerId }, { status: 'accepted', code });
     const nw3 = await Matches.findOneAndUpdate({ myID: peerId, peerID: myID }, { status: 'accepted', code });
     res.json("Data successfully reached");
@@ -151,8 +149,6 @@ app.get('/interview', (req, res) => {
 })
 app.get('/review/:peerId', async (req, res) => {
     const peer = await User.findOne({ _id: req.params.peerId });
-    const peerN = peer.name;
-    console.log(peer);
     res.render('webApp/reviewForm', { peer });
 })
 app.post('/review', async (req, res) => {
@@ -181,8 +177,7 @@ app.post('/review', async (req, res) => {
         }
     }
     const upd = await Stats.findOneAndUpdate({ user: req.query.peerId }, update, { upsert: true, new: true });
-    console.log(upd);
-    res.render('webApp/stats');
+    res.redirect('/');
 })
 app.get('/stats', async (req, res) => {
 

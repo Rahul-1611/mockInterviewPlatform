@@ -17,7 +17,7 @@
                             </h6>
                             <p class="card-text mb-0 pb-0">Matched Preferences: </p>
                             <p class="fs-2">
-                                <%= data[i].similarity*100 %>%
+                                <%= (data[i].similarity*100).toFixed(2); %>%
                             </p>
                             <button type="button" class="setup btn btn-success card-link" data-peerId=<%=data[i].peerID
                                 %>>Setup
