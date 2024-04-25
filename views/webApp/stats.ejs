@@ -4,5 +4,69 @@
 
     <body>
         <%- include('../partials/nav') %>
+            <div class="container">
+                <div class="top">
+                    <h1>Your recent ratings</h1>
+                    <div class="scores d-flex justify-content-around">
+                        <div class="one">
+                            <div>
+                                <span>
+                                    <%= scores.first %>
+                                </span>/10
+                            </div>
+                            <p>Coding</p>
+                        </div>
+                        <div class="one">
+                            <div><span>
+                                    <%= scores.second %>
+                                </span>/10</div>
+                            <p>Communication</p>
+                        </div>
+                        <div class="one">
+                            <div><span>
+                                    <%= scores.third %>
+                                </span>/10</div>
+                            <p>Problem Solving</p>
+                        </div>
+                        <div class="one">
+                            <div><span>
+                                    <%= scores.fourth %>
+                                </span>/5</div>
+                            <p>Overall</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <h1>Your overall ratings</h1>
+                    <div class="scores d-flex justify-content-around">
+                        <div class="one">
+                            <div><span>
+                                    <%= scores.firstOv %>
+                                </span>/10</div>
+                            <p>Coding</p>
+                        </div>
+                        <div class="one">
+                            <div><span>
+                                    <%= scores.secondOv %>
+                                </span>/10</div>
+                            <p>Communication</p>
+                        </div>
+                        <div class="one">
+                            <div><span>
+                                    <%= scores.thirdOv %>
+                                </span>/10</div>
+                            <p>Problem Solving</p>
+                        </div>
+                        <div class="one">
+                            <div><span>
+                                    <%= scores.fourthOv %>
+                                </span>/5</div>
+                            <p>Overall</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
 
             <%- include('../partials/foot') %>

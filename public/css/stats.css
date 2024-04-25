@@ -2,3 +2,30 @@ body {
     background: linear-gradient(0.35turn, white, cyan);
     min-height: 100vh;
 }
+
+.scores {
+    padding: 2rem;
+    background: linear-gradient(white, rgb(88, 167, 209));
+    border: 3px solid black;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+}
+
+.one {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 10rem;
+    width: 10rem;
+    border: 2px solid darkblue;
+    border-radius: 10px;
+    background-color: rgb(146, 255, 255);
+
+}
+
+.one span {
+    font-size: 5rem;
+    margin: 0;
+    /* Adjust the font size as needed */
+}
